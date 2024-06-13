@@ -1,0 +1,174 @@
+///CREATE TABLE  department(dep_id int NOT NULL PRIMARY KEY,dep_name varchar(90) NOT NULL,dep_head varchar(90) NOT NULL);
+
+Table created.
+
+
+
+/// CREATE TABLE employee(employee_id int NOT NULL PRIMARY KEY,employee_name varchar(90) NOT NULL,(DoB*) date NOT NULL,    (joinning_date*) date NOT NULL,emp_type varchar(90) NOT NULL,    (email *)varchar(90) NOT NULL,address varchar(90) NOT NULL,salary int NOT NULL,(date_of_leaveing*) date NOT NULL,department_id int NOT NULL, foreign key(department_id) references department(department_id));
+
+Table created.
+
+
+
+///CREATE TABLE patient1(patient_id int NOT NULL PRIMARY KEY,patient_name varchar(90) NOT NULL,phone_no varchar(90) NOT NULL,blood_group varchar(90) NOT NULL,(email*) varchar(90) NOT NULL,gender varchar(90) NOT NULL,address varchar(90) NOT NULL,disease varchar(90) NOT NULL,(arrival_date*) date NOT NULL,(discharge_date*) date NOT NULL);
+
+Table created.
+
+
+
+ ******CREATE TABLE Medicine(medicine_id int NOT NULL PRIMARY KEY,medicine_name varchar(90) NOT NULL,quantity int NOT NULL,DatenDay date NOT NULL,medicine_cost nchar(10) NOT NULL,patient_id int NOT NULL, foreign key (patient_id) references patient(patient_id));
+
+Table created.
+
+
+
+
+create table Bill(   payment_id int NOT NULL PRIMARY KEY,DatenDay date NOT NULL,room_cost int NOT NULL,othercharge int NULL,mcost int NOT NULL,Total int NOT NULL,patient_id int NOT NULL, foreign key(patient_id) references patient(patient_id));
+
+Table created.
+
+
+
+******CREATE TABLE nurse(nurse_id int NOT NULL PRIMARY KEY,patient_id int NOT NULL, foreign key(patient_id) references patient(patient_id),employee_id int NOT NULL, foreign key(employee_id) references employee(employee_id) );
+
+Table created.**
+
+
+
+
+******CREATE TABLE doctor(doctor_id int NOT NULL PRIMARY KEY,qualification varchar(90) NOT NULL,patient_id int NOT NULL ,foreign key(patient_id) references patient(patient_id),employee_id int NOT NULL, foreign key(employee_id) references employee(employee_id));
+
+Table created.**
+
+
+
+///CREATE TABLE Test(test_id int NOT NULL PRIMARY KEY,test_name varchar(90) NOT NULL,test_cost int NOT NULL,DatenDay date NOT NULL,patient_id int NOT NULL, foreign key(patient_id) references patient(patient_id));
+
+Table created.
+
+
+
+
+departments:
+Emergency department (ED)
+Intensive care unit (ICU)
+Medical-surgical unit (MSU)
+Obstetrics and gynecology department (OB/GYN)
+Pediatrics department
+Radiology and imaging department
+Laboratory and pathology department
+Pharmacy department
+Physical therapy and rehabilitation department
+Psychiatry and behavioral health department
+Nutrition and dietary department
+Administration and support services department
+
+
+
+
+
+
+
+
+
+
+ select * from bill;
+
+PAYMENT_ID DATENDAY        MCOST      TOTAL PATIENT_ID
+---------- ---------- ---------- ---------- ----------
+       401 18-09-0021        204       1000        201
+       402 19-08-0022        890       1500        202
+       403 29-07-0021        800       3500        203
+       404 21-08-0022        390       4000        204
+       405 20-09-0021        399       4900        205
+
+
+
+select * from test;
+
+   TEST_ID TNAME                            TCOST DD         PATIENT_ID
+---------- --------------------------- ---------- ---------- ----------
+       301 Allergies                          98 18-09-2022        201
+       302 Stomach_Aches                     100 16-08-2023        202
+       303 Diarrhea                          120 13-08-2021        203
+       304 Corona                            789 18-09-0021        204
+       305 Chickenpox                        799 19-08-0021        205
+
+
+
+
+
+
+ select* from employee;
+
+       EID ENAME                          ETYPE                          ADDRESS                            SALARY DEPARTMENT_ID
+---------- ------------------------------ ------------------------------ ------------------------------ ---------- -------------
+      1001 Dr.Akhila                      Doctor                         Delhi                              100000           101
+      1002 Dr.Raju                        Doctor                         Pune                               200000           102
+      1003 Saroja                         Nurse                          Goa                                 10000           101
+      1004 Guna                           Nurse                          Thulu                               20000           105
+      1005 Ravi                           Nurse                          Bihar                               25000           103
+
+SQL> select* from bill;
+
+PAYMENT_ID DATENDAY        MCOST      TOTAL PATIENT_ID
+---------- ---------- ---------- ---------- ----------
+       401 18-09-0021        204       1000        201
+       402 19-08-0022        890       1500        202
+       403 29-07-0021        800       3500        203
+       404 21-08-0022        390       4000        204
+       405 20-09-0021        399       4900        205
+
+SQL> select* from test;
+
+   TEST_ID TNAME                     TCOST DD         PATIENT_ID
+---------- -------------------- ---------- ---------- ----------
+       301 Allergies                    98 18-09-2022        201
+       302 Stomach_Aches               100 16-08-2023        202
+       303 Diarrhea                    120 13-08-2021        203
+       304 Corona                      789 18-09-0021        204
+       305 Chickenpox                  799 19-08-0021        205
+
+SQL> select* from department;
+
+DEPARTMENT_ID DEP_NAME                                           DEP_HEAD
+------------- -------------------------------------------------- ------------------------------
+          101 Emergency_Department(ED)                           Shaker
+          102 Intensive_care_unit(ICU)                           Padma
+          103 Medical-surgical_unit(MSU)                         UmaRani
+          104 Obstetrics_and_gynecology_department(OB/GYN)       Shiva
+          105 Pediatrics_department(PD)                          Vishnu
+
+SQL> select* from patient1;
+
+PATIENT_ID PATIENT_NAME                   PHONE_NO                       ADDRESS                        DISEASE
+---------- ------------------------------ ------------------------------ ------------------------------ ------------------------------
+       201 Suma                           987398741                      Delhi                          Cold_and_Flew
+       202 Rani                           989847234                      Pune                           Headache
+       203 Mena                           987649879                      Goa                            Fever
+       204 Renu                           913247890                      Patna                          Corona
+       205 Ramu                           9678657444                     Hyd                            Chickenpox
+
+
+
+
+
+SQL>create table employee(eid number not null,ename VARCHAR2(30) not null,etype VARCHAR2(30) not null,address VARCHAR2(30) not null,salary number not null, department_id number not null);
+
+SQL>create table patient1(patient_id number not null,patient_name VARCHAR2(30) not null,phone_no VARCHAR2(30) not null,address VARCHAR2(30) not null,disease varchar(30) not null);
+
+SQL>create table department(department_id number not null,dep_name VARCHAR2(50) not null,dep_name VARCHAR2(30) not null);
+
+SQL>create table test(test_id number not null,tname VARCHAR2(50) not null,tcost VARCHAR2(30) not null , dd date not null , patient_id number not null);
+
+SQL>create table bill(payment_id number not null,datenday date not null,mcost number not null, total number not null, patient_id number not null);
+
+
+
+
+SQL>insert into test values(301,'Allergies',98,18-SEP-22,201);
+SQL>insert into test values(302,'Stomach_Aches',100,16-AUG-23,202);
+SQL>insert into test values(303,'Diarrhea',100,13-AUG-21,203);
+SQL>insert into test values(304,'Corona',100,18-SEP-21,204);
+SQL>insert into test values(305,'Chickenpox',100,19-AUG-21,205);
+
